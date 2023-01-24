@@ -1,25 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import 'antd/dist/reset.css';
 import './App.css';
+import MilkBoard from './componennts/MilkBoard';
+import {Input} from 'antd'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <header className='heading'>
+      <h2 className='heading-title'>THE MILK STORE</h2>
+    </header>
+    <main className='main-display'>
+      <section className='utilities'>
+      <Input.Search type="text" placeholder='Search' onSearch={() => console.log('heeeey')} className='search-field' />
+      <h5 className='filter'>Filter</h5>
+      </section>
+      <MilkBoard />
+    </main>
+    </>
   );
 }
 

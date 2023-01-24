@@ -1,0 +1,25 @@
+.milk-card {
+    display: grid;
+    grid-template-rows: 60% 20% 20%;
+    gap: 0.2rem;
+    width: 40%;
+    height:8rem;
+    background-color: whitesmoke;
+    border-radius: 0.5rem;
+    margin-bottom: 2.5%;
+}
+
+.milk-image {
+    justify-self: center;
+    align-self: center;
+    width: 60%;
+    height: 90%;
+}
+
+.milk-description {
+    margin-left: 0.5rem;
+}
+
+.bold {
+    font-weight: bolder;
+}
