@@ -8,17 +8,21 @@ import {Pagination} from 'antd'
 
 function MilkBoard() {
   const [data] = useState<Model>(database)
+  const [page, setPage] = useState<number>(1)
+  const paginationHandler = (currentPage: number) => {
+    setPage(currentPage)
+    console.log(page*10)
+  }
   return (
     <>
     <section className='milk-board'>
-      {data.results.slice(1,10).map((milkInfo) => {
-        console.log(milkInfo)
+      {data.results.slice(((page*10)-10),(page*10)).map((milkInfo) => {
         return (
           <MilkCard milkInfo={milkInfo} key={milkInfo.id}/>
         )
       })}
     </section>
-    <Pagination  defaultCurrent={1} total={100} onChange={(current) => console.log(current)}/>
+    <Pagination className='page-numbers'  defaultCurrent={page} total={100} onChange={paginationHandler}/>
     </>
 
   )
