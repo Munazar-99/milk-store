@@ -1,28 +1,56 @@
-import React, { useState } from 'react'
-import {database} from '../database'
+import React, { useEffect, useState } from 'react'
 import { Model } from '../model'
 import './MilkBoard.css'
 import MilkCard from './MilkCard'
 import 'antd/dist/reset.css';
-import {Pagination} from 'antd'
+import { Pagination } from 'antd'
 
-function MilkBoard() {
-  const [data] = useState<Model>(database)
-  const [page, setPage] = useState<number>(1)
+function MilkBoard({ data,
+  filteredList,
+  page,
+  setPage
+}:
+  {
+    data: Model,
+    filteredList: string[],
+    page: number,
+    setPage: React.Dispatch<React.SetStateAction<number>>
+  }) {
+  const [numberofItems, setNumberofItems] = useState<number>(100)
   const paginationHandler = (currentPage: number) => {
     setPage(currentPage)
-    console.log(page*10)
   }
+  useEffect(() => {
+    setNumberofItems(data.results.filter((milkInfo, index, self) => filteredList.length > 0
+      ? filteredList.indexOf(milkInfo.type) !== -1
+      : self).length
+    )
+  }, [filteredList, data.results])
+
   return (
     <>
-    <section className='milk-board'>
-      {data.results.slice(((page*10)-10),(page*10)).map((milkInfo) => {
-        return (
-          <MilkCard milkInfo={milkInfo} key={milkInfo.id}/>
-        )
-      })}
-    </section>
-    <Pagination className='page-numbers'  defaultCurrent={page} total={100} onChange={paginationHandler}/>
+      <section className='milk-board'>
+        {data.results
+          .filter((milkInfo, index, self) => filteredList.length > 0
+            ? filteredList.indexOf(milkInfo.type) !== -1
+            : self
+          )
+          .slice(((page * 10) - 10), (page * 10))
+          .map((milkInfo, index, self) => {
+            return (
+              <MilkCard milkInfo={milkInfo} key={milkInfo.id} />
+            )
+          })}
+      </section>
+      <Pagination
+        showSizeChanger={false}
+        responsive
+        className='page-numbers'
+        defaultCurrent={page}
+        current={page}
+        total={numberofItems}
+        onChange={paginationHandler}
+      />
     </>
 
   )
