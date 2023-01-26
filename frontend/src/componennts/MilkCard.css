@@ -1,7 +1,7 @@
 .milk-card {
     display: grid;
     grid-template-rows: 60% 20% 20%;
-    gap: 0.2rem;
+    gap: 0.5rem;
     width: 40%;
     height:8rem;
     background-color: whitesmoke;
@@ -17,12 +17,30 @@
     height: 90%;
 }
 
-
-
-.milk-description {
-    margin-left: 0.5rem;
+.milk-name {
+    justify-self: center;
+    max-height:100% ;
 }
+
+.milk-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.milk-type {
+    justify-self: flex-start;
+}
+
 
 .bold {
     font-weight: bolder;
+}
+
+@media only screen and (min-width: 760px) {
+    .milk-card{
+        justify-self: center;
+        width: 88%;
+        height: 10rem;
+    }
 }

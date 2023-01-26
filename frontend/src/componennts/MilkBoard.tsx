@@ -21,16 +21,16 @@ function MilkBoard({ data,
     setPage(currentPage)
   }
   useEffect(() => {
-    setNumberofItems(data.results.filter((milkInfo, index, self) => filteredList.length > 0
+    setNumberofItems(data?.results.filter((milkInfo, index, self) => filteredList.length > 0
       ? filteredList.indexOf(milkInfo.type) !== -1
       : self).length
     )
-  }, [filteredList, data.results])
+  }, [filteredList, data?.results])
 
   return (
     <>
       <section className='milk-board'>
-        {data.results
+        {data?.results
           .filter((milkInfo, index, self) => filteredList.length > 0
             ? filteredList.indexOf(milkInfo.type) !== -1
             : self
