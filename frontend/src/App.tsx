@@ -10,16 +10,14 @@ function App() {
   const [data, setData] = useState<Model>()
   const [page, setPage] = useState<number>(1)
   const [filteredList, setFilteredList] = useState<string[]>([])
-  console.log(process.env.REACT_APP_URL)
   useEffect(() => {
     if(typeof(process.env.REACT_APP_URL) === 'string') {
       fetch(process.env.REACT_APP_URL)
       .then(response => response.json())
-      .then(res => console.log(res) )
+      .then(res => setData(res) )
       .catch(err => console.log(err.message))
     }
   }, [])
-  console.log(data)
   return (
     <>
     <header className='heading'>
