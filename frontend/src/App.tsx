@@ -12,7 +12,7 @@ function App() {
   const [filteredList, setFilteredList] = useState<string[]>([])
   useEffect(() => {
     if(typeof(process.env.REACT_APP_URL) === 'string') {
-      fetch(process.env.REACT_APP_URL)
+      fetch(`${process.env.REACT_APP_URL}`)
       .then(response => response.json())
       .then(res => setData(res) )
       .catch(err => console.log(err.message))
