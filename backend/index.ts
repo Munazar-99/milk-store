@@ -5,9 +5,9 @@ import { data } from './data/database';
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
-app.get('/api/products', (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
   res.json(data);
 });
 
