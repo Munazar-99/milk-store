@@ -9,8 +9,14 @@ import { Model } from './model'
 function App() {
   const [data, setData] = useState<Model>()
   const [page, setPage] = useState<number>(1)
+  const [searchedMilk, setSearchedMilk] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(true)
   const [filteredList, setFilteredList] = useState<string[]>([])
+
+  const searchHandler =(value :string) => {
+    setSearchedMilk(value)
+  }
+
   useEffect(() => {
     if (typeof (process.env.REACT_APP_URL) === 'string') {
       fetch(`${process.env.REACT_APP_URL}`)
@@ -20,6 +26,7 @@ function App() {
         .finally(() => setLoading(false))
     }
   }, [])
+
   return (
     <>
       <header className='heading'>
@@ -27,10 +34,10 @@ function App() {
       </header>
       <main className='main-display'>
         <section className='utilities'>
-          <Input.Search type="text" placeholder='Search' onSearch={() => console.log('heeeey')} className='search-field' />
-          < Filter setPage={setPage} setFilteredList={setFilteredList} />
+          <Input.Search type="text" placeholder='Search' onSearch={searchHandler} className='search-field' />
+          < Filter setPage={setPage} setFilteredList={setFilteredList}  />
         </section>
-        {data && <MilkBoard page={page} setPage={setPage} data={data} filteredList={filteredList} />}
+        {data && <MilkBoard page={page} searchedMilk={searchedMilk} setPage={setPage} data={data} filteredList={filteredList} />}
         {loading &&
           <section className='spinner-container'>
             <Space align='center' size="large">

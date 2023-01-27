@@ -6,7 +6,7 @@
     justify-content: space-around;
     align-items: flex-start;
     justify-items: flex-start;
-    min-height: 80%;
+    min-height: 25rem;
     flex-wrap: wrap;
 
 }

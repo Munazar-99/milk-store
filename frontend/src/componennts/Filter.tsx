@@ -6,7 +6,7 @@ import { FilterTwoTone } from '@ant-design/icons'
 
 function Filter({ setFilteredList, setPage }: {
   setFilteredList: React.Dispatch<React.SetStateAction<string[]>>,
-  setPage: React.Dispatch<React.SetStateAction<number>>
+  setPage: React.Dispatch<React.SetStateAction<number>>,
 }) {
   const items = database.results
     .map(milk => milk.type)

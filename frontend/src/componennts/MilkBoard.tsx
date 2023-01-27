@@ -8,24 +8,34 @@ import { Pagination } from 'antd'
 function MilkBoard({ data,
   filteredList,
   page,
-  setPage
+  setPage,
+  searchedMilk,
 }:
   {
     data: Model,
     filteredList: string[],
     page: number,
-    setPage: React.Dispatch<React.SetStateAction<number>>
+    setPage: React.Dispatch<React.SetStateAction<number>>,
+    searchedMilk: string,
   }) {
   const [numberofItems, setNumberofItems] = useState<number>(100)
   const paginationHandler = (currentPage: number) => {
     setPage(currentPage)
   }
   useEffect(() => {
-    setNumberofItems(data?.results.filter((milkInfo, index, self) => filteredList.length > 0
-      ? filteredList.indexOf(milkInfo.type) !== -1
-      : self).length
+    setNumberofItems(data?.results
+      .filter((milkInfo, index, self) => filteredList.length > 0
+        ? filteredList.indexOf(milkInfo.type) !== -1
+        : self)
+      .filter((milkInfo) => milkInfo.name
+        .split(' ')
+        .slice(0, 2)
+        .join(' ')
+        .toLowerCase()
+        .includes(searchedMilk.toLowerCase()))
+      .length
     )
-  }, [filteredList, data?.results])
+  }, [filteredList, data?.results, searchedMilk])
 
   return (
     <>
@@ -34,6 +44,13 @@ function MilkBoard({ data,
           .filter((milkInfo, index, self) => filteredList.length > 0
             ? filteredList.indexOf(milkInfo.type) !== -1
             : self
+          )
+          .filter((milkInfo) => milkInfo.name
+            .split(' ')
+            .slice(0, 2)
+            .join(' ')
+            .toLowerCase()
+            .includes(searchedMilk.toLowerCase())
           )
           .slice(((page * 10) - 10), (page * 10))
           .map((milkInfo, index, self) => {
