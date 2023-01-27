@@ -32,7 +32,6 @@
   .main-display{
     display: flex;
     flex-direction: column;
-    height: unset;
     gap: 2rem;
   }
   .utilities {
@@ -40,4 +39,12 @@
     align-self: center;
     width: 80%;
   }
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    height: 30rem;
+    align-content: center;
+    color: hotpink;
+  }
+
 }
