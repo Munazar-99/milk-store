@@ -34,7 +34,7 @@ function App() {
       </header>
       <main className='main-display'>
         <section className='utilities'>
-          <Input.Search type="text" placeholder='Search' onSearch={searchHandler} className='search-field' />
+          <Input.Search allowClear type="text" placeholder='Search' onSearch={searchHandler} className='search-field' />
           < Filter setPage={setPage} setFilteredList={setFilteredList}  />
         </section>
         {data && <MilkBoard page={page} searchedMilk={searchedMilk} setPage={setPage} data={data} filteredList={filteredList} />}
