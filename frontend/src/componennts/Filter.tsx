@@ -1,7 +1,7 @@
 import React from 'react'
 import { database } from '../database'
 import { Dropdown, Space, Typography } from 'antd'
-import { DownOutlined } from '@ant-design/icons'
+import { FilterTwoTone } from '@ant-design/icons'
 
 
 function Filter({ setFilteredList, setPage }: {
@@ -33,9 +33,9 @@ function Filter({ setFilteredList, setPage }: {
       arrow
     >
       <Typography.Link>
-        <Space size={'small'}>
+        <Space size='small'>
           Filter
-          <DownOutlined spin />
+          <FilterTwoTone  />
         </Space>
       </Typography.Link>
     </Dropdown>

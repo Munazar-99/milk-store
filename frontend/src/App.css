@@ -27,6 +27,13 @@
   align-self: center;
   width: 55%;
 }
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  height: 25rem;
+  align-content: center;
+  color: hotpink;
+}
 
 @media only screen and (min-width: 760px) {
   .main-display{
