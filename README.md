@@ -14,12 +14,11 @@
 7. Bootstrap
 
 ## Backend:
-1. MongoDB
-2. REST API
-3. Express JS
-4. Typescript
+1. REST API
+2. Express JS
+3. Typescript
 
-## To run server: Runs on 5002 port
+## To run server: Runs on  8080 port
 1. npm i
 2. npm start
 
