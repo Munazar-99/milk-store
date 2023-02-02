@@ -6,12 +6,8 @@
 
 ## Frontend:
 1. Reatc JS
-2. Tailwind CSS
-3. SCSS
 4. Typescript
-5. Redux
-6. React Bootstrap
-7. Bootstrap
+3. Ant-Design
 
 ## Backend:
 1. REST API
